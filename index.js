@@ -1,9 +1,8 @@
-// console.log("hi Fras,dear friend,mother fucker");
-// import argv from "yargs";
-// const argv = require("yargs").argv;
+import yargs from "yargs";
 
 import contactsService from "./contacts.js";
-// const contactsService = require("constants.js");
+
+const { argv } = yargs(process.argv.slice(2));
 
 const invokeActions = async ({ action, id, name, email, phone }) => {
   switch (action) {
@@ -15,12 +14,16 @@ const invokeActions = async ({ action, id, name, email, phone }) => {
       return console.log(contact);
     case "add":
       const newContact = await contactsService.addContact(name, email, phone);
-      return console.log(newContact);
+    case "remove":
+      const deleteContact = await contactsService.removeContact(id);
+      return console.log(deleteContact);
     default:
       console.log("neponyatka");
   }
 };
 // invokeActions({ action: "list" });
 // invokeActions({ action: "get", id: "AeHIrLTr6JkxGE6SN-0Rw" });
+// invokeActions({ action: "add", name: "Mango", email: "mango@gmail.com", phone: "322-22-22" });
+// invokeActions({ action: "remove", id: "qdggE76Jtbfd9eWJHrssH" });
 
-// invokeActions(argv);
+invokeActions(argv);

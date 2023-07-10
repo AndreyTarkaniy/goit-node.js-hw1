@@ -30,8 +30,18 @@ export const addContact = async (name, email, phone) => {
   // return allContacts; - поверне масив з доданим контатом
 };
 
+export const removeContact = async contactId => {
+  const allContacts = await listContacts();
+  const index = allContacts.findIndex(({ id }) => id === contactId);
+  if (index === -1) {
+    return null;
+  }
+  const result = allContacts.splice(index, 1)[0];
+  return result;
+};
+
 // listContacts();
 
 // const contactsService = { listContacts };
 // module.exports = contactsService;
-export default { listContacts, getContactById, addContact };
+export default { listContacts, getContactById, addContact, removeContact };
