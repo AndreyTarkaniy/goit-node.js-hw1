@@ -14,6 +14,7 @@ const invokeActions = async ({ action, id, name, email, phone }) => {
       return console.log(contact);
     case "add":
       const newContact = await contactsService.addContact(name, email, phone);
+      console.log(newContact);
     case "remove":
       const deleteContact = await contactsService.removeContact(id);
       return console.log(deleteContact);
@@ -21,9 +22,5 @@ const invokeActions = async ({ action, id, name, email, phone }) => {
       console.log("neponyatka");
   }
 };
-// invokeActions({ action: "list" });
-// invokeActions({ action: "get", id: "AeHIrLTr6JkxGE6SN-0Rw" });
-// invokeActions({ action: "add", name: "Mango", email: "mango@gmail.com", phone: "322-22-22" });
-// invokeActions({ action: "remove", id: "qdggE76Jtbfd9eWJHrssH" });
 
 invokeActions(argv);

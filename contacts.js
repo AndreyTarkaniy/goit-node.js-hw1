@@ -40,8 +40,4 @@ export const removeContact = async contactId => {
   return result;
 };
 
-// listContacts();
-
-// const contactsService = { listContacts };
-// module.exports = contactsService;
 export default { listContacts, getContactById, addContact, removeContact };
